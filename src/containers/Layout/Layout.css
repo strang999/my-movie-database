@@ -1,0 +1,12 @@
+.Cards {
+    display: flex;
+    flex-direction: row;
+    max-width: 300px;
+    justify-content: center;
+   min-width: 200px;
+    margin: auto;
+}
+.Poster {
+    
+   height: 350px;
+}
