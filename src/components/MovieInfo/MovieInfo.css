@@ -1,0 +1,12 @@
+.movie-image {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 99999;
+    cursor: pointer;
+    background-color: transparent;
+}
+.movie-image:hover {
+    transform: scale(1.2);
+    transition: ease-in .3s ;
+}

@@ -2,28 +2,24 @@ import React from 'react';
 import Movie from './../Movie/Movie';
 import { Card, Col, Row } from 'antd';
 
-const MovieList = (props) => {
+const MovieList = ({ movies, viewMovieInfo, }) => {
     return (
-        <React.Fragment>
         <div className="container">
-        <Row type="flex" justify="space-around">
-                
-                   {props.movies.map((movie, i) => {
-                        return (<Movie
-
+            <Row type="flex" justify="space-around">
+                {movies.map((movie, i) => {
+                    return (
+                        <Movie
                             movieId={movie.id}
-                            viewMovieInfo={props.viewMovieInfo}
+                            viewMovieInfo={viewMovieInfo}
                             key={i}
                             image={movie.poster_path}
-                            title = {movie.title}
-                             />)
-                    })
+                            title={movie.title}
+                        />)
+                })
+                }
+            </Row>
+        </div>
 
-                   }
-                    </Row>
-                    </div>
-                                   </React.Fragment>
-       
     )
 
 

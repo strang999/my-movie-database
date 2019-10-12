@@ -1,29 +1,31 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
+import { withRouter } from 'react-router-dom';
 import { Card, Col } from 'antd';
 const { Meta } = Card;
 
+class Movie extends PureComponent {
+    viewInfo = (movieId) => {
+        const { history, viewMovieInfo } = this.props;
+        viewMovieInfo(movieId);
+        history.push(`/movies/${movieId}`);
+    }
 
-const Movie = (props) => {
-
-
-    
-    return (
-        
-            <Col span={6}>
+    render() {
+        const { movieId, image, title, id, overview } = this.props;
+        return (
+            <Col sm={24} md={6}>
                 <Card
                     hoverable
-                    onClick={()=> props.viewMovieInfo(props.movieId)}
+                    onClick={() => this.viewInfo(movieId)}
                     style={{ width: 250 }}
-                    cover={<img alt={props.title} src={`https://image.tmdb.org/t/p/w185${props.image}`} />}
-                    // cover={props.image == null ? <img src={"./../../../assets/no_img.png"} style={{ width:"100%", height: 360 }} : <img src={`https://image.tmdb.org/t/p/w185${props.image}`} alt={props.title} />}
-
-                    key={props.id}
+                    cover={<img alt={title} src={`https://image.tmdb.org/t/p/w185${image}`} />}
+                    key={id}
                 >
-                    <Meta title={props.title } description={props.overview} />
+                    <Meta title={title} description={overview} />
                 </Card>
             </Col>
-       
-    )
 
+        )
+    }
 }
-export default Movie;
+export default withRouter(Movie);
